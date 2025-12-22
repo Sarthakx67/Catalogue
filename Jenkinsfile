@@ -30,12 +30,12 @@ pipeline {
     //             echo "Sonar scan done"
     //         }
     //     }
-    //     stage('Build') {
-    //         steps {
-    //             sh 'ls -ltr'
-    //             sh 'zip -r catalogue.zip ./* --exclude=.git --exclude=.zip'
-    //         }
-    //     }
+        stage('Build') {
+            steps {
+                sh 'ls -ltr'
+                sh 'zip -r catalogue.zip ./* --exclude=.git --exclude=.zip'
+            }
+        }
     //     stage('SAST') {
     //         steps {
     //             echo "SAST Done"
