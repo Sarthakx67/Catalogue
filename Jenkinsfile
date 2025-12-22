@@ -43,25 +43,25 @@ pipeline {
     //         }
     //     }
     //     //install pipeline utility steps plugin, if not installed
-    //     stage('Publish Artifact') {
-    //         steps {
-    //             nexusArtifactUploader(
-    //                 nexusVersion: 'nexus3',
-    //                 protocol: 'http',
-    //                 nexusUrl: '172.31.86.20:8081/',
-    //                 groupId: 'com.roboshop',
-    //                 version: "$packageVersion",
-    //                 repository: 'catalogue',
-    //                 credentialsId: 'nexus-auth',
-    //                 artifacts: [
-    //                     [artifactId: 'catalogue',
-    //                     classifier: '',
-    //                     file: 'catalogue.zip',
-    //                     type: 'zip']
-    //                 ]
-    //             )
-    //         }
-    //     }
+        stage('Publish Artifact') {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: '15.207.249.221:8081/',
+                    groupId: 'com.roboshop',
+                    version: '1.0.0', //"$packageVersion",
+                    repository: 'catalogue',
+                    credentialsId: 'nexus-auth',
+                    artifacts: [
+                        [artifactId: 'catalogue',
+                        classifier: '',
+                        file: 'catalogue.zip',
+                        type: 'zip']
+                    ]
+                )
+            }
+        }
 
     //     //here I need to configure downstram job. I have to pass package version for deployment
     //     // This job will wait until downstrem job is over
@@ -78,11 +78,11 @@ pipeline {
     //     }
     // }
 
-    // post{
-    //     always{
-    //         echo 'cleaning up workspace'
-    //         //deleteDir()
-    //     }
-    // }
+    post{
+        always{
+            echo 'cleaning up workspace'
+            //deleteDir()
+        }
+    }
 }
 }
