@@ -43,12 +43,13 @@ pipeline {
             }
         }
         //install pipeline utility steps plugin, if not installed
+        // pushing new version of artifacts in nexus
         stage('Publish Artifact') {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '172.31.1.199:8081/',
+                    nexusUrl: '172.31.1.199:8081',
                     groupId: 'com.roboshop',
                     version: "$packageVersion",
                     repository: 'catalogue',
